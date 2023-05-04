@@ -1,0 +1,29 @@
+{
+  "name": "tiny-menu",
+  "version": "0.0.0",
+  "description": "Terminal menu",
+  "main": "index.js",
+  "files": [
+    "index.js"
+  ],
+  "scripts": {
+    "test": "standard"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/LuKks/tiny-menu.git"
+  },
+  "author": "Lucas Barrena (LuKks)",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/LuKks/tiny-menu/issues"
+  },
+  "homepage": "https://github.com/LuKks/tiny-menu#readme",
+  "dependencies": {
+    "ask-readline": "^1.1.0",
+    "tiny-crayon": "^1.0.5"
+  },
+  "devDependencies": {
+    "standard": "^17.0.0"
+  }
+}
