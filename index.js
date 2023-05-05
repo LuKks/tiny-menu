@@ -60,9 +60,7 @@ module.exports = class Menu {
       busy = false
     }
 
-    if (item === null) return
-
-    return this._handler(item.num, item.value, page)
+    return this._handler(item ? item.num : null, item ? item.value : undefined, page)
   }
 
   // TODO: async close () {}
