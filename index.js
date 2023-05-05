@@ -4,12 +4,13 @@ const ask = require('ask-readline')
 let busy = false
 
 module.exports = class Menu {
-  constructor ({ render, handler }) {
-    this._render = render
-    this._handler = handler
+  constructor (opts = {}) {
+    this._render = opts.render
+    this._handler = opts.handler
 
     this._items = new Map()
     this._ask = opts.ask
+    this._clearConsole = opts.clear !== false
     // TODO: buffer logs
   }
 
@@ -56,8 +57,8 @@ module.exports = class Menu {
       await this._render(page)
       item = await this._askItem()
     } finally {
-      this._clear()
       busy = false
+      this._clear()
     }
 
     return this._handler(item ? item.num : null, item ? item.value : undefined, page)
@@ -67,7 +68,7 @@ module.exports = class Menu {
 
   _clear () {
     this._items.clear()
-    console.clear()
+    if (this._clearConsole) console.clear()
   }
 
   async _askItem () {
