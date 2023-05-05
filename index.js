@@ -9,6 +9,7 @@ module.exports = class Menu {
     this._handler = handler
 
     this._items = new Map()
+    this._ask = opts.ask
     // TODO: buffer logs
   }
 
@@ -74,7 +75,7 @@ module.exports = class Menu {
   async _askItem () {
     while (true) {
       // TODO: being able to cancel an "ask" to close menus
-      const answer = await ask('', { oninput: autoSubmit })
+      const answer = this._ask ? await this._ask(userReturn) : await this.ask()
       if (answer === null) return answer
 
       const num = Number(answer)
