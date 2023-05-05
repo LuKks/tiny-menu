@@ -85,6 +85,11 @@ module.exports = class Menu {
     }
   }
 
+  ask (query, opts) {
+    if (!query) return ask('', { oninput: autoSubmit })
+    return ask(query, opts)
+  }
+
   static calculatePages (page, maxItems, perPage = 7) {
     const max = Math.floor(maxItems / perPage) + (maxItems % perPage ? 1 : 0)
 
