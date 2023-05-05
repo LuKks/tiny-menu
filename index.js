@@ -54,8 +54,8 @@ module.exports = class Menu {
     let item = null
 
     try {
-      await this._render(page)
-      item = await this._askItem()
+      const userReturn = await this._render(page)
+      item = await this._askItem(userReturn)
     } finally {
       busy = false
       this._clear()
@@ -71,7 +71,7 @@ module.exports = class Menu {
     if (this._clearConsole) console.clear()
   }
 
-  async _askItem () {
+  async _askItem (userReturn) {
     while (true) {
       // TODO: being able to cancel an "ask" to close menus
       const answer = this._ask ? await this._ask(userReturn) : await this.ask()
