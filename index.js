@@ -72,11 +72,14 @@ module.exports = class Menu {
   }
 
   async _askItem (userReturn) {
+    console.log()
+
     while (true) {
       // TODO: being able to cancel an "ask" to close menus
       const answer = this._ask ? await this._ask(userReturn) : await this.ask()
       if (answer === null) return answer
 
+      // TODO: it could support any kind of "id", be it a string or number. Current limitation is that custom "ask" is only supporting numbers
       const num = Number(answer)
       const item = this._items.get(num)
       if (!item || item.disabled) continue
